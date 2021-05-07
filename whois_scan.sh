@@ -32,10 +32,12 @@ LBLUE='\033[1;96m' # HIGHLIGHTS / NUMBERS ...
 LGREEN='\033[1;92m' # SUCCESS
 NOCOLOR='\033[0m' # DEFAULT FONT
 
-#function main() {
-#
-#}
-
+## If no arguments supplied, display usage
+if [ -z "$1" ]
+then
+printf "%b\n\n" "${RED}You need to provide list of hosts.${WHITE} Run the script again with ${YELLOW} --list ${WHITE}<PATH-TO-LIST>${NOCOLOR}" && exit 2
+display_usage
+fi
 
 ## Print usage
 if [[ ("$1" = "--help") ||  "$1" = "-h" ]]
@@ -81,4 +83,4 @@ do
 done < $list    
 exit 0
 }
-scan
+scan 2>/dev/null
